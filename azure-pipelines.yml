@@ -55,7 +55,7 @@ steps:
     script: |
       cd $(Build.ArtifactStagingDirectory)
       dir/p/w
-      dotnet nuget *.nupkg -s $(NuGetSourceServerUrl) -k $(NuGetSourceServerApiKey)
+      dotnet nuget push *.nupkg -s $(NuGetSourceServerUrl) -k $(NuGetSourceServerApiKey)
 
 - task: CmdLine@2
   inputs:
