@@ -49,17 +49,13 @@ steps:
     packagesToPack: 'Src/Auditor/*.csproj'
     versioningScheme: byEnvVar
     versionEnvVar: COMPLETE_VERSION
+    
 - task: CmdLine@2
   inputs:
     script: |
-      cd D:\a\1\a/
+      cd $(Build.ArtifactStagingDirectory)
       dir/p/w
-
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'custom'
-    custom: 'nuget'
-    arguments: 'push $(Build.ArtifactStagingDirectory)/Auditor*.nupkg -s $(NuGetSourceServerUrl) -k $(NuGetSourceServerApiKey)'
+      dotnet nuget *.nupkg -s $(NuGetSourceServerUrl) -k $(NuGetSourceServerApiKey)
 
 - task: CmdLine@2
   inputs:
