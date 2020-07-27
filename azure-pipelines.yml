@@ -38,7 +38,7 @@ steps:
   displayName: 'dotnet build'
   inputs:
     command: 'build'
-    projects: '''Src/*.sln'''
+    projects: 'Src/*.sln'
     arguments: '--configuration $(BuildConfiguration) /p:Version=$(COMPLETE_VERSION)'
 
 - task: DotNetCoreCLI@2
