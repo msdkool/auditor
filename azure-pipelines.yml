@@ -49,9 +49,12 @@ steps:
     versioningScheme: byEnvVar
     versionEnvVar: COMPLETE_VERSION
 
-- task: NuGetCommand@2
+- task: DotNetCoreCLI@2
+  displayName: Push Nuget Package
   inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'external'
-    publishFeedCredentials: 'nuget con'
+    command: custom
+    custom: nuget
+    arguments: >
+      push $(Build.ArtifactStagingDirectory)/*.nupkg
+      -s $(NuGetSourceServerUrl)
+      -k $(NuGetSourceServerApiKey)
