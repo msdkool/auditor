@@ -45,6 +45,7 @@ steps:
   displayName: "Nuget Pack"
   inputs:
     command: 'pack'
+    packDirectory: $(Build.ArtifactStagingDirectory)
     packagesToPack: 'Src/Auditor/*.csproj'
     versioningScheme: byEnvVar
     versionEnvVar: COMPLETE_VERSION
@@ -55,6 +56,6 @@ steps:
     command: custom
     custom: nuget
     arguments: >
-      push $(Build.ArtifactStagingDirectory)/Src/*.nupkg
+      push $(Build.ArtifactStagingDirectory)/*.nupkg
       -s $(NuGetSourceServerUrl)
       -k $(NuGetSourceServerApiKey)
