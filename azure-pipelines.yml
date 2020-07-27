@@ -55,10 +55,13 @@ steps:
     script: |
       cd $(Build.ArtifactStagingDirectory)
       dir/p/w
-      dotnet nuget push *.nupkg -s $(NuGetSourceServerUrl) -k $(NuGetSourceServerApiKey)
 
-- task: CmdLine@2
+- task: DotNetCoreCLI@2
+  displayName: Push Nuget Package
   inputs:
-    script: |
-      cd D:\a\1\a/
-      dir/p/w
+    command: custom
+    custom: nuget
+    arguments: >
+      push *.nupkg
+      -s $(NuGetSourceServerUrl)
+      -k $(NuGetSourceServerApiKey)
