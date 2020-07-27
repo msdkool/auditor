@@ -1,0 +1,65 @@
+CREATE DATABASE AuditorSampleDb
+GO
+
+USE [AuditorSampleDb]
+GO
+
+-- Sample Table Uncomment if you want to test 
+-- CREATE TABLE Person (
+--     PersonID int IDENTITY(1,1) PRIMARY KEY,
+--     Name varchar(100),
+--     Age int,
+--     Address varchar(1000),
+-- )
+-- GO
+
+--- AuditTrail Table
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AuditTrail](
+	[audittrailid] [bigint] IDENTITY(1,1) NOT NULL,
+	[action] [nvarchar](max) NULL,
+	[actionentity] [nvarchar](max) NULL,
+	[actionby] [nvarchar](max) NULL,
+	[auditdate] [datetime2](7) NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[AuditTrail] ADD  CONSTRAINT [PK_AuditTrail] PRIMARY KEY CLUSTERED 
+(
+	[audittrailid] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[AuditTrail] ADD  DEFAULT (getdate()) FOR [auditdate]
+GO
+
+--- AuditTrailDetail Table
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[AuditTrailDetail](
+	[audittraildetailid] [bigint] IDENTITY(1,1) NOT NULL,
+	[audittrailid] [bigint] NOT NULL,
+	[columnname] [nvarchar](max) NULL,
+	[oldrecord] [nvarchar](max) NULL,
+	[newrecord] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[AuditTrailDetail] ADD  CONSTRAINT [PK_AuditTrailDetail] PRIMARY KEY CLUSTERED 
+(
+	[audittraildetailid] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF) ON [PRIMARY]
+GO
+CREATE NONCLUSTERED INDEX [IX_AuditTrailDetail_audittrailid] ON [dbo].[AuditTrailDetail]
+(
+	[audittrailid] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, DROP_EXISTING = OFF, ONLINE = OFF) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[AuditTrailDetail]  WITH CHECK ADD  CONSTRAINT [FK_AuditTrailDetail_AuditTrail_audittrailid] FOREIGN KEY([audittrailid])
+REFERENCES [dbo].[AuditTrail] ([audittrailid])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[AuditTrailDetail] CHECK CONSTRAINT [FK_AuditTrailDetail_AuditTrail_audittrailid]
+GO
