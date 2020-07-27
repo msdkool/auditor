@@ -49,7 +49,11 @@ steps:
     packagesToPack: 'Src/Auditor/*.csproj'
     versioningScheme: byEnvVar
     versionEnvVar: COMPLETE_VERSION
-
+- task: CmdLine@2
+  inputs:
+    script: |
+      cd D:\a\1\a/
+      dir/p/w
 - task: DotNetCoreCLI@2
   displayName: Push Nuget Package
   inputs:
