@@ -45,21 +45,23 @@ steps:
   displayName: "Nuget Pack"
   inputs:
     command: 'pack'
-    packDirectory: $(Build.ArtifactStagingDirectory)
+    packDirectory: '$(Build.ArtifactStagingDirectory)\Nuget'
     packagesToPack: 'Src/Auditor/*.csproj'
     versioningScheme: byEnvVar
     versionEnvVar: COMPLETE_VERSION
+    
 - task: CmdLine@2
   inputs:
     script: |
-      cd D:\a\1\a/
+      cd $(Build.ArtifactStagingDirectory)
       dir/p/w
+
 - task: DotNetCoreCLI@2
   displayName: Push Nuget Package
   inputs:
     command: custom
     custom: nuget
     arguments: >
-      push $(Build.ArtifactStagingDirectory)/Auditor*.nupkg
+      push $(Build.ArtifactStagingDirectory)\Nuget\SimpleAuditor.*.nupkg
       -s $(NuGetSourceServerUrl)
       -k $(NuGetSourceServerApiKey)
