@@ -50,12 +50,6 @@ steps:
     versioningScheme: byEnvVar
     versionEnvVar: COMPLETE_VERSION
     
-- task: CmdLine@2
-  inputs:
-    script: |
-      cd $(Build.ArtifactStagingDirectory)
-      dir/p/w
-
 - task: DotNetCoreCLI@2
   displayName: Push Nuget Package
   inputs:
