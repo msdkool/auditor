@@ -59,7 +59,9 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: Push Nuget Package
   inputs:
-    command: 'custom'
-    projects: 'Src/Auditor/*.csproj'
-    custom: 'nuget'
-    arguments: 'push $(Build.ArtifactStagingDirectory)\Nuget\*.nupkg -s $(NuGetSourceServerUrl) -k $(NuGetSourceServerApiKey)'
+    command: custom
+    custom: nuget
+    arguments: >
+      push $(Build.ArtifactStagingDirectory)/Auditor.*.nupkg
+      -s $(NuGetSourceServerUrl)
+      -k $(NuGetSourceServerApiKey)
