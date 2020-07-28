@@ -5,7 +5,7 @@
     <PackageId>SimpleAuditor</PackageId>
     <PackageLicenseUrl>https://github.com/msdkool/auditor/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/msdkool/auditor</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/msdkool/auditor/simpleauditor.svg</PackageIconUrl>
+    <PackageIconUrl>https://github.com/msdkool/auditor/blob/master/simpleauditor.svg</PackageIconUrl>
     <RepositoryUrl>https://github.com/msdkool/auditor/</RepositoryUrl>
     <PackageTags>audit auditor databse entityframeworkcore entityframework sql sqlserver</PackageTags>
     <PackageReleaseNotes>- audit log for entities</PackageReleaseNotes>
