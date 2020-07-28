@@ -24,7 +24,7 @@ steps:
     targetType: 'inline'
     displayName: 'Create version number'
     script:
-      echo "##vso[task.setvariable variable=complete_version]$(GitVersion.NugetVersion).$(Build.BuildId)"
+      echo "##vso[task.setvariable variable=complete_version]$(GitVersion.NugetVersion)"
 - task: NuGetToolInstaller@1
 - task: NuGetCommand@2
   displayName: 'Restore packages'
@@ -50,12 +50,6 @@ steps:
     versioningScheme: byEnvVar
     versionEnvVar: COMPLETE_VERSION
     
-- task: CmdLine@2
-  inputs:
-    script: |
-      cd $(Build.ArtifactStagingDirectory)
-      dir/p/w
-
 - task: DotNetCoreCLI@2
   displayName: Push Nuget Package
   inputs:
