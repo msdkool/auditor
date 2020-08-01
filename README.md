@@ -44,5 +44,9 @@ In the example above the Person entity has been marked for Audit, SimpleAuditor 
 
 By default the library will attempt to access the `IHttpContextAccessor` to fetch the identity of the person carrying out the action. The library allows you override that method is order to provide a custom GetUserName.
 
+## Sample Code
 
+The sample code can be found in the link below 
+
+https://github.com/msdkool/auditor/tree/master/Src/Auditor.Console
 
