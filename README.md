@@ -6,7 +6,7 @@ Simple EntityFrameWorkCore Audit Log
 
 ## About SimpleAuditor
 
-SimpleAuditor is an Audit library that enables you log changes made on your tables by simply putting the Audit attribute on the tables. The library makes it easy to log changes and also allows for override of the method of getting who effected the change.
+SimpleAuditor is an audit library that enables you log changes made on your tables by simply putting the Audit attribute on the tables. The library makes it easy to log changes and also allows for override of the method of getting who effected the change.
 
 ## How to use
 
