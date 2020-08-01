@@ -1,6 +1,6 @@
 # SimpleAuditor
 
-[![Build Status](https://orbsync.visualstudio.com/DigitalPockets/_apis/build/status/SimpleAuditor?branchName=master)](https://orbsync.visualstudio.com/DigitalPockets/_build/latest?definitionId=11&branchName=master)
+[![Build Status](https://orbsync.visualstudio.com/DigitalPockets/_apis/build/status/SimpleAuditor?branchName=master)](https://orbsync.visualstudio.com/DigitalPockets/_build/latest?definitionId=11&branchName=master)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![NuGet Badge](https://buildstats.info/nuget/SimpleAuditor)](https://www.nuget.org/packages/SimpleAuditor)
 
 Simple EntityFrameWorkCore Audit Log 
 
