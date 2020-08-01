@@ -6,7 +6,7 @@ Simple EntityFrameWorkCore Audit Log
 
 ## About SimpleAuditor
 
-SimpleAuditor is a C Sharp library that enables you log changes made on your tables by simply putting an attributes on the tables. The library makes easy to log changes and also allows for override of who made the change.
+SimpleAuditor is an Audit library that enables you log changes made on your tables by simply putting the Audit attribute on the tables. The library makes it easy to log changes and also allows for override of the method of getting who effected the change.
 
 ## How to use
 
