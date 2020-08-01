@@ -27,7 +27,4 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Auditor\Auditor.csproj" />
-  </ItemGroup>
 </Project>
