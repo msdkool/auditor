@@ -42,7 +42,7 @@ In the example above the Person entity has been marked for Audit, SimpleAuditor 
 
 ## GetUserName method
 
-By default the library will attempt to access the `IHttpContextAccessor` to fetch the identity of the person carrying out the action. The library allows you override that method is order to provide a custom GetUserName.
+By default the library will attempt to access the `IHttpContextAccessor` to fetch the identity of the person carrying out the action. The library allows you override that method in order to provide a custom GetUserName.
 
 ## Sample Code
 
