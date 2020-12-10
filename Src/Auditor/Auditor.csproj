@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>SimpleAuditor</PackageId>
     <PackageLicenseUrl>https://github.com/msdkool/auditor/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/msdkool/auditor</PackageProjectUrl>
