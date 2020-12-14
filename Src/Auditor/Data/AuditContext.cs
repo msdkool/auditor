@@ -108,6 +108,10 @@ namespace Auditor.Data
         public virtual string GetUserName()
         {
             IHttpContextAccessor _accessor = new HttpContextAccessor();
+
+            if (_accessor.HttpContext == null)
+                return string.Empty;
+
             return _accessor.HttpContext?.User?.Identity?.Name;
         } 
 
