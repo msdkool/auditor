@@ -13,9 +13,9 @@ namespace Auditor.Helper
             var props = from p in dbContext.GetType().GetProperties()
                         let attr = p.GetCustomAttributes(typeof(AuditAttribute), true)
                         where attr.Length == 1
-                        select p.Name;
-            
-            return props.ToHashSet();
+                        select p;
+            // Gets the name of a generic type an element inside of IQueryable<T>
+            return props.Select(p => p.PropertyType.GetGenericArguments()[0].Name).ToHashSet();
         }
     }
 }
