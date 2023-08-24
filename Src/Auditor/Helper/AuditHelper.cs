@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection;
 using Auditor.Entities;
@@ -20,8 +21,10 @@ namespace Auditor.Helper
         public static AuditTrail LoadEntiyProperty(EntityEntry entry, AuditTrail auditTrail)
         {
             var allProps = entry.Entity.GetType().GetTypeInfo().DeclaredProperties;
-            var props = allProps.Where(p => p.PropertyType == typeof(string) ||
-                                !typeof(IEnumerable).IsAssignableFrom(p.PropertyType));
+            var props = allProps
+                // Ignore NotMapped props to avoid the following error 'The property could not be found. Ensure that the property exists and has been included in the model.'
+                .Where(p => p.GetCustomAttributes(typeof(NotMappedAttribute)).Count() == 0)
+                .Where(p => p.PropertyType == typeof(string) || !typeof(IEnumerable).IsAssignableFrom(p.PropertyType));
 
             foreach (var prop in props)
             {
